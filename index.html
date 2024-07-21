@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>siddharth shyniben</title>
+
+    <link href="css/normalize.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <section>
+        <div id="logo-container">
+          <svg
+            id="logo"
+            width="108"
+            height="153"
+            viewBox="0 0 120 170"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M102.759 150.796L20.0096 160L11.7347 138.885C4.83884 101.348 14.8378 45.6553 110 123.184L102.759 150.796Z"
+              stroke-width="8"
+            />
+            <path
+              d="M17.2406 19.2039L99.9904 10L108.265 31.1148C115.161 68.6521 105.162 124.345 10 46.8155L17.2406 19.2039Z"
+              stroke-width="8"
+            />
+          </svg>
+        </div>
+        <div id="header">
+          <div>
+            <p>
+              I bring together data and design using a unique skillset to craft
+              exceptional experiences
+            </p>
+            <button class="button">
+              <span class="button__text">
+                <span class="button__text-inner">Get in touch</span>
+              </span>
+            </button>
+          </div>
+          <div>
+            <h1>
+              I build<br />
+              <span id="morph">
+                <span id="morph1">stunning software</span>
+                <span id="morph2"></span>
+              </span>
+            </h1>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <svg id="filters">
+      <defs>
+        <filter id="threshold">
+          <feColorMatrix
+            in="SourceGraphic"
+            type="matrix"
+            values="1 0 0 0 0
+									0 1 0 0 0
+									0 0 1 0 0
+									0 0 0 255 -140"
+          />
+        </filter>
+      </defs>
+    </svg>
+    <div class="cursor"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script defer src="js/morph.js"></script>
+    <script defer src="js/button.js"></script>
+  </body>
+</html>
