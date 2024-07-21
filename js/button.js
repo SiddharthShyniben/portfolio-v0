@@ -1,4 +1,5 @@
 const lerp = (a, b, n) => (1 - n) * a + n * b;
+const distance = (x1, y1, x2, y2) => Math.hypot(x1 - x2, y1 - y2);
 
 const calcWinsize = () => ({
   width: window.innerWidth,
@@ -9,13 +10,6 @@ const getMousePos = (e) => ({
   x: e.clientX,
   y: e.clientY,
 });
-
-const distance = (x1, y1, x2, y2) => {
-  var a = x1 - x2;
-  var b = y1 - y2;
-
-  return Math.hypot(a, b);
-};
 
 // Calculate the viewport size
 let winsize = calcWinsize();
@@ -54,14 +48,17 @@ class Cursor {
     };
     window.addEventListener("mousemove", this.onMouseMoveEv);
   }
+
   enter() {
     this.renderedStyles["scale"].current = 4;
     this.renderedStyles["opacity"].current = 0.2;
   }
+
   leave() {
     this.renderedStyles["scale"].current = 1;
     this.renderedStyles["opacity"].current = 1;
   }
+
   render() {
     this.renderedStyles["tx"].current = mouse.x - this.bounds.width / 2;
     this.renderedStyles["ty"].current = mouse.y - this.bounds.height / 2;
@@ -94,9 +91,7 @@ class ButtonCtrl extends EventTarget {
       ty: { previous: 0, current: 0, amt: 0.1 },
     };
 
-    this.state = {
-      hover: false,
-    };
+    this.state = { hover: false };
 
     this.events = {
       enter: new Event("enter"),
@@ -107,25 +102,24 @@ class ButtonCtrl extends EventTarget {
     this.initEvents();
     requestAnimationFrame(() => this.render());
   }
+
   calculateSizePosition() {
-    // size/position
     this.rect = this.DOM.el.getBoundingClientRect();
-    // the movement will take place when the distance from the mouse to the center of the button is lower than this value
-    this.distanceToTrigger = this.rect.width * 1;
+    this.distanceToTrigger = this.rect.width * 0.7;
   }
+
   initEvents() {
     this.onResize = () => this.calculateSizePosition();
     window.addEventListener("resize", this.onResize);
   }
+
   render() {
-    // calculate the distance from the mouse to the center of the button
     const distanceMouseButton = distance(
       mouse.x + window.scrollX,
       mouse.y + window.scrollY,
       this.rect.left + this.rect.width / 2,
       this.rect.top + this.rect.height / 2,
     );
-    // new values for the translations
     let x = 0;
     let y = 0;
 
@@ -136,6 +130,7 @@ class ButtonCtrl extends EventTarget {
       x =
         (mouse.x + window.scrollX - (this.rect.left + this.rect.width / 2)) *
         0.3;
+
       y =
         (mouse.y + window.scrollY - (this.rect.top + this.rect.height / 2)) *
         0.3;
@@ -159,6 +154,7 @@ class ButtonCtrl extends EventTarget {
 
     requestAnimationFrame(() => this.render());
   }
+
   enter() {
     this.dispatchEvent(this.events.enter);
 
@@ -183,6 +179,7 @@ class ButtonCtrl extends EventTarget {
         y: "0%",
       });
   }
+
   leave() {
     this.dispatchEvent(this.events.leave);
 
