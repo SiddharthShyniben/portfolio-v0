@@ -46,6 +46,7 @@ class Cursor {
       requestAnimationFrame(() => this.render());
       window.removeEventListener("mousemove", this.onMouseMoveEv);
     };
+
     window.addEventListener("mousemove", this.onMouseMoveEv);
   }
 
