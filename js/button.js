@@ -1,21 +1,6 @@
-const lerp = (a, b, n) => (1 - n) * a + n * b;
-const distance = (x1, y1, x2, y2) => Math.hypot(x1 - x2, y1 - y2);
-
-const calcWinsize = () => ({
-  width: window.innerWidth,
-  height: window.innerHeight,
-});
-
-const getMousePos = (e) => ({
-  x: e.clientX,
-  y: e.clientY,
-});
-
-// Calculate the viewport size
 let winsize = calcWinsize();
 window.addEventListener("resize", () => (winsize = calcWinsize()));
 
-// Track the mouse position
 let mouse = { x: 0, y: 0 };
 window.addEventListener("mousemove", (ev) => (mouse = getMousePos(ev)));
 

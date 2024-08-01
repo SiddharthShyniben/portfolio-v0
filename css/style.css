@@ -233,17 +233,17 @@ h3 {
     animation-delay: -2s;
   }
 
-  .content--canvas canvas {
+  .card canvas {
     z-index: -9;
     display: none;
   }
 
-  .content--canvas:hover {
+  .card:hover {
+    background: #0e1111;
     color: #f9f6ee;
   }
 
-  .content--canvas:hover canvas {
-    z-index: -9;
+  .card:hover canvas {
     display: block;
   }
 
