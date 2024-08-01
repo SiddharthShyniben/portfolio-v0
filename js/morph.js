@@ -37,7 +37,7 @@ function doMorph() {
 
 // A lot of the magic happens here, this is what applies the blur filter to the text.
 function setMorph(fraction) {
-  fraction = Math.cos(fraction * Math.PI) / -2 + 0.5;
+  // fraction = Math.cos(fraction * Math.PI) / -2 + 0.5;
 
   morphElements[1].style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
   morphElements[1].style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
