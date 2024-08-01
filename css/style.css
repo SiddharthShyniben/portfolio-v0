@@ -222,6 +222,7 @@ h3 {
 
   .card {
     animation: float 30s infinite ease-in-out;
+    transition: color 1s;
   }
 
   .card:first-child {
@@ -230,6 +231,20 @@ h3 {
 
   .card:last-child {
     animation-delay: -2s;
+  }
+
+  .content--canvas canvas {
+    z-index: -9;
+    display: none;
+  }
+
+  .content--canvas:hover {
+    color: #f9f6ee;
+  }
+
+  .content--canvas:hover canvas {
+    z-index: -9;
+    display: block;
   }
 
   @keyframes fadeIn {
