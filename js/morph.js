@@ -61,8 +61,8 @@ function doCooldown() {
 }
 
 // Animation loop, which is called every frame.
-function animate() {
-  requestAnimationFrame(animate);
+function animateMorph() {
+  requestAnimationFrame(animateMorph);
 
   let newTime = new Date();
   let shouldIncrementIndex = cooldown > 0;
@@ -83,4 +83,5 @@ function animate() {
 }
 
 // Start the animation.
-animate();
+if (!window.matchMedia("(prefers-reduced-motion: reduced)").matches)
+  animateMorph();
